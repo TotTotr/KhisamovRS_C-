@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttackAircraft.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="FormAttackAircraft.cs">
       <SubType>Form</SubType>
     </Compile>
