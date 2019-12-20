@@ -9,7 +9,7 @@ namespace WindowsFormsAttackAircraft
 {
     public class Aircraft : FlyingObject
     {
-        protected const int carWidth = 150;
+        protected const int carWidth = 100;
         protected const int carHeight = 60;
         public Aircraft(int maxSpeed, float weight, Color mainColor)
         {
@@ -32,11 +32,11 @@ namespace WindowsFormsAttackAircraft
                 case Direction.Left:
                     if (_startPosX - step > 0)
                     {
-                        _startPosX = step - 10;
+                        _startPosX -= step;
                     }
                     break;
                 case Direction.Up:
-                    if (_startPosY - step > 20)
+                    if (_startPosY - step > 0)
                     {
                         _startPosY -= step;
                     }
@@ -52,15 +52,18 @@ namespace WindowsFormsAttackAircraft
 
         public override void DrawAircraft(Graphics g)
         {
-            Brush br = new SolidBrush(Color.Gray);
+
+            Brush br = new SolidBrush(MainColor);
             g.FillEllipse(br, _startPosX + 30, _startPosY - 10, 100, 20);
             g.FillEllipse(br, _startPosX + 30, _startPosY - 10 - 10, 9, 20);
 
-            Brush br1 = new SolidBrush(MainColor);
+            Brush br1 = new SolidBrush(Color.DarkBlue);
             g.FillEllipse(br1, _startPosX + 60, _startPosY - 5, 30, 8);
             Brush br2 = new SolidBrush(Color.Black);
 
             g.FillEllipse(br2, _startPosX + 85, _startPosY - 12, 5, 20);
+
+
         }
     }
 }

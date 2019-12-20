@@ -1,10 +1,11 @@
 ﻿namespace WindowsFormsAttackAircraft
 {
-    partial class FormAttackAircraft
+    partial class FormParking
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
         {
+
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -12,97 +13,114 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windowary>
+        #region Код, автоматически созданный конструктором форм Windows
+
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAttackAircraft));
             this.pictureBoxAttackAircraft = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
-            this.buttonUp = new System.Windows.Forms.Button();
-            this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttonRight = new System.Windows.Forms.Button();
-            this.buttonDown = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSet_Aircraft = new System.Windows.Forms.Button();
+            this.buttonSet_AttackAircraft = new System.Windows.Forms.Button();
+            this.SvoystvoSam = new System.Windows.Forms.GroupBox();
+            this.pictureBoxTakeAircraft = new System.Windows.Forms.PictureBox();
+            this.NomerSamolet = new System.Windows.Forms.MaskedTextBox();
+            this.labelMesto = new System.Windows.Forms.Label();
+            this.buttonTake_Aircraft = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttackAircraft)).BeginInit();
+            this.SvoystvoSam.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAircraft)).BeginInit();
             this.SuspendLayout();
-
-            this.pictureBoxAttackAircraft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxAttackAircraft.Location = new System.Drawing.Point(0, 0);
+            // 
+            // pictureBoxAttackAircraft
+            // 
+            this.pictureBoxAttackAircraft.Location = new System.Drawing.Point(1, 12);
             this.pictureBoxAttackAircraft.Name = "pictureBoxAttackAircraft";
-            this.pictureBoxAttackAircraft.Size = new System.Drawing.Size(884, 461);
+            this.pictureBoxAttackAircraft.Size = new System.Drawing.Size(777, 446);
             this.pictureBoxAttackAircraft.TabIndex = 0;
             this.pictureBoxAttackAircraft.TabStop = false;
-            this.pictureBoxAttackAircraft.Click += new System.EventHandler(this.buttonMove_Click);
-
-            this.buttonCreate.Location = new System.Drawing.Point(0, 0);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 37);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "создать штурмовик";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
-
-            this.buttonUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonUp.BackgroundImage")));
-            this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonUp.Location = new System.Drawing.Point(818, 382);
-            this.buttonUp.Name = "buttonUp";
-            this.buttonUp.Size = new System.Drawing.Size(30, 31);
-            this.buttonUp.TabIndex = 2;
-            this.buttonUp.UseVisualStyleBackColor = true;
-            this.buttonUp.Click += new System.EventHandler(this.buttonMove_Click);
-
-            this.buttonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonLeft.BackgroundImage")));
-            this.buttonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLeft.Location = new System.Drawing.Point(782, 402);
-            this.buttonLeft.Name = "buttonLeft";
-            this.buttonLeft.Size = new System.Drawing.Size(30, 30);
-            this.buttonLeft.TabIndex = 3;
-            this.buttonLeft.UseVisualStyleBackColor = true;
-            this.buttonLeft.Click += new System.EventHandler(this.buttonMove_Click);
-
-            this.buttonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRight.BackgroundImage")));
-            this.buttonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRight.Location = new System.Drawing.Point(854, 402);
-            this.buttonRight.Name = "buttonRight";
-            this.buttonRight.Size = new System.Drawing.Size(30, 30);
-            this.buttonRight.TabIndex = 4;
-            this.buttonRight.UseVisualStyleBackColor = true;
-            this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
-
-            this.buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDown.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonDown.BackgroundImage")));
-            this.buttonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDown.Location = new System.Drawing.Point(818, 419);
-            this.buttonDown.Name = "buttonDown";
-            this.buttonDown.Size = new System.Drawing.Size(30, 30);
-            this.buttonDown.TabIndex = 5;
-            this.buttonDown.UseVisualStyleBackColor = true;
-            this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
-
-            this.button1.Location = new System.Drawing.Point(81, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 37);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "создать самолет";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-
+            // 
+            // buttonSet_Aircraft
+            // 
+            this.buttonSet_Aircraft.Location = new System.Drawing.Point(862, 12);
+            this.buttonSet_Aircraft.Name = "buttonSet_Aircraft";
+            this.buttonSet_Aircraft.Size = new System.Drawing.Size(75, 45);
+            this.buttonSet_Aircraft.TabIndex = 1;
+            this.buttonSet_Aircraft.Text = "Посадить самолет ";
+            this.buttonSet_Aircraft.UseVisualStyleBackColor = true;
+            this.buttonSet_Aircraft.Click += new System.EventHandler(this.ButtonSet_Aircraft_Click);
+            // 
+            // buttonSet_AttackAircraft
+            // 
+            this.buttonSet_AttackAircraft.Location = new System.Drawing.Point(862, 63);
+            this.buttonSet_AttackAircraft.Name = "buttonSet_AttackAircraft";
+            this.buttonSet_AttackAircraft.Size = new System.Drawing.Size(75, 52);
+            this.buttonSet_AttackAircraft.TabIndex = 6;
+            this.buttonSet_AttackAircraft.Text = "Посадить бомбордировщик";
+            this.buttonSet_AttackAircraft.UseVisualStyleBackColor = true;
+            this.buttonSet_AttackAircraft.Click += new System.EventHandler(this.ButtonSet_AttackAircraft_Click);
+            // 
+            // SvoystvoSam
+            // 
+            this.SvoystvoSam.Controls.Add(this.pictureBoxTakeAircraft);
+            this.SvoystvoSam.Controls.Add(this.NomerSamolet);
+            this.SvoystvoSam.Controls.Add(this.labelMesto);
+            this.SvoystvoSam.Controls.Add(this.buttonTake_Aircraft);
+            this.SvoystvoSam.Location = new System.Drawing.Point(784, 209);
+            this.SvoystvoSam.Name = "SvoystvoSam";
+            this.SvoystvoSam.Size = new System.Drawing.Size(153, 240);
+            this.SvoystvoSam.TabIndex = 7;
+            this.SvoystvoSam.TabStop = false;
+            this.SvoystvoSam.Text = "Свойства Самолета";
+            // 
+            // pictureBoxTakeAircraft
+            // 
+            this.pictureBoxTakeAircraft.Location = new System.Drawing.Point(6, 90);
+            this.pictureBoxTakeAircraft.Name = "pictureBoxTakeAircraft";
+            this.pictureBoxTakeAircraft.Size = new System.Drawing.Size(141, 144);
+            this.pictureBoxTakeAircraft.TabIndex = 3;
+            this.pictureBoxTakeAircraft.TabStop = false;
+            // 
+            // NomerSamolet
+            // 
+            this.NomerSamolet.Location = new System.Drawing.Point(50, 32);
+            this.NomerSamolet.Name = "NomerSamolet";
+            this.NomerSamolet.Size = new System.Drawing.Size(38, 20);
+            this.NomerSamolet.TabIndex = 2;
+            // 
+            // labelMesto
+            // 
+            this.labelMesto.AutoSize = true;
+            this.labelMesto.Location = new System.Drawing.Point(2, 35);
+            this.labelMesto.Name = "labelMesto";
+            this.labelMesto.Size = new System.Drawing.Size(42, 13);
+            this.labelMesto.TabIndex = 1;
+            this.labelMesto.Text = "Место:";
+            // 
+            // buttonTake_Aircraft
+            // 
+            this.buttonTake_Aircraft.Location = new System.Drawing.Point(5, 61);
+            this.buttonTake_Aircraft.Name = "buttonTake_Aircraft";
+            this.buttonTake_Aircraft.Size = new System.Drawing.Size(75, 23);
+            this.buttonTake_Aircraft.TabIndex = 0;
+            this.buttonTake_Aircraft.Text = "Забрать";
+            this.buttonTake_Aircraft.UseVisualStyleBackColor = true;
+            this.buttonTake_Aircraft.Click += new System.EventHandler(this.ButtonTake_Aircraft_Click);
+            // 
+            // FormParking
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonDown);
-            this.Controls.Add(this.buttonRight);
-            this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.buttonUp);
-            this.Controls.Add(this.buttonCreate);
+            this.ClientSize = new System.Drawing.Size(959, 461);
+            this.Controls.Add(this.SvoystvoSam);
+            this.Controls.Add(this.buttonSet_AttackAircraft);
+            this.Controls.Add(this.buttonSet_Aircraft);
             this.Controls.Add(this.pictureBoxAttackAircraft);
-            this.Name = "FormAttackAircraft";
+            this.Name = "FormParking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormAttackAircraft";
+            this.Text = "FormParking";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttackAircraft)).EndInit();
+            this.SvoystvoSam.ResumeLayout(false);
+            this.SvoystvoSam.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAircraft)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,12 +128,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAttackAircraft;
-        private System.Windows.Forms.Button buttonCreate;
-        private System.Windows.Forms.Button buttonUp;
-        private System.Windows.Forms.Button buttonLeft;
-        private System.Windows.Forms.Button buttonRight;
-        private System.Windows.Forms.Button buttonDown;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSet_Aircraft;
+        private System.Windows.Forms.Button buttonSet_AttackAircraft;
+        private System.Windows.Forms.GroupBox SvoystvoSam;
+        private System.Windows.Forms.Button buttonTake_Aircraft;
+        private System.Windows.Forms.PictureBox pictureBoxTakeAircraft;
+        private System.Windows.Forms.MaskedTextBox NomerSamolet;
+        private System.Windows.Forms.Label labelMesto;
     }
 }
 
