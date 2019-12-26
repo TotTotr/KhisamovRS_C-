@@ -14,6 +14,8 @@ namespace WindowsFormsAttackAircraft
     {
         MultiLevelParking parking;
         private const int countLevel = 5;
+        FormAircraftConfig form;
+
         public FormParking()
         {
             InitializeComponent();
@@ -24,59 +26,14 @@ namespace WindowsFormsAttackAircraft
             }
             listBoxLevels.SelectedIndex = 0;
         }
-
         private void Draw()
         {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                Bitmap bmp = new Bitmap(pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
-                Graphics gr = Graphics.FromImage(bmp);
-                parking[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBoxAttackAircraft.Image = bmp;
-            }
+            Bitmap bmp = new Bitmap(pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
+            Graphics gr = Graphics.FromImage(bmp);
+            parking[listBoxLevels.SelectedIndex].Draw(gr);
+            pictureBoxAttackAircraft.Image = bmp;
         }
 
-        private void buttonSet_Aircraft_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new Aircraft(100, 1000, dialog.Color);
-                    int place = parking[listBoxLevels.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-
-        }
-
-        private void buttonSet_AttackAircraft_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var car = new AttackAircraft(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        int place = parking[listBoxLevels.SelectedIndex] + car;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-
-                    }
-                }
-            }
-        }
         private void buttonTake_Aircraft_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -103,6 +60,27 @@ namespace WindowsFormsAttackAircraft
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            form = new FormAircraftConfig();
+            form.AddEvent(AddAircraft);
+            form.Show();
+        }
+        private void AddAircraft(ITransport aircraft)
+        {
+            if (aircraft != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + aircraft; if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Самолет не удалось поставить");
+                }
+            }
         }
     }
 }

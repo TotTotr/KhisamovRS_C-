@@ -12,5 +12,6 @@ namespace WindowsFormsAttackAircraft
         void SetPosition(int x, int y, int width, int height);
         void MoveTransport(Direction direction);
         void DrawAircraft(Graphics g);
+        void SetMainColor(Color color);
     }
 }
