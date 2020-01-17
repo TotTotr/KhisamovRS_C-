@@ -29,7 +29,6 @@ namespace WindowsFormsAttackAircraft
         {
             MainColor = color;
         }
-
         public abstract void DrawAircraft(Graphics g);
         public abstract void MoveTransport(Direction direction);
     }
