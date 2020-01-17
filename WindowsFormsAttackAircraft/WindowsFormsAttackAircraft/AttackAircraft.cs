@@ -28,7 +28,6 @@ namespace WindowsFormsAttackAircraft
         }
         public override void DrawAircraft(Graphics g)
         {
-
             base.DrawAircraft(g);
             if (Pulemet)
             {
