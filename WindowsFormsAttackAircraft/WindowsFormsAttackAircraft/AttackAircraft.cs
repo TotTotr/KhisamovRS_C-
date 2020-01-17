@@ -24,21 +24,17 @@ namespace WindowsFormsAttackAircraft
         }
         public override void DrawAircraft(Graphics g)
         {
-
             base.DrawAircraft(g);
             if (Pulemet)
             {
                 Brush br1 = new SolidBrush(DopColor);
                 g.FillRectangle(br1, _startPosX + 110, _startPosY + 4, 30, 2);
-
             }
-
             if (Vint)
             {
                 Brush br2 = new SolidBrush(Color.Black);
                 g.FillEllipse(br2, _startPosX + 35, _startPosY - 22, 5, 20);
             }
-
             if (Bombs)
             {
                 Brush b = new SolidBrush(Color.Black);
