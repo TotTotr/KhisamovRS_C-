@@ -49,19 +49,14 @@ namespace WindowsFormsAttackAircraft
                     break;
             }
         }
-
-
         public override void DrawAircraft(Graphics g)
         {
-
             Brush br = new SolidBrush(MainColor);
             g.FillEllipse(br, _startPosX + 30, _startPosY - 10, 100, 20);
             g.FillEllipse(br, _startPosX + 30, _startPosY - 10 - 10, 9, 20);
-
             Brush br1 = new SolidBrush(Color.DarkBlue);
             g.FillEllipse(br1, _startPosX + 60, _startPosY - 5, 30, 8);
             Brush br2 = new SolidBrush(Color.Black);
-
             g.FillEllipse(br2, _startPosX + 85, _startPosY - 12, 5, 20);
 
         }
