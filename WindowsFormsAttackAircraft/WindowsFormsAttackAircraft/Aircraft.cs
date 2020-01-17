@@ -23,24 +23,28 @@ namespace WindowsFormsAttackAircraft
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
             {
+                
                 case Direction.Right:
                     if (_startPosX + step < _pictureWidth - carWidth)
                     {
                         _startPosX += step;
                     }
                     break;
+                
                 case Direction.Left:
                     if (_startPosX - step > 0)
                     {
                         _startPosX -= step;
                     }
                     break;
+               
                 case Direction.Up:
                     if (_startPosY - step > 0)
                     {
                         _startPosY -= step;
                     }
                     break;
+               
                 case Direction.Down:
                     if (_startPosY + step < _pictureHeight - carHeight)
                     {
@@ -49,6 +53,7 @@ namespace WindowsFormsAttackAircraft
                     break;
             }
         }
+
         public override void DrawAircraft(Graphics g)
         {
             Brush br = new SolidBrush(MainColor);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+
 namespace WindowsFormsAttackAircraft
 {
     public class AttackAircraft : Aircraft
@@ -13,14 +14,17 @@ namespace WindowsFormsAttackAircraft
         public bool Vint { private set; get; }
         public bool Pulemet { private set; get; }
         public bool Bombs { private set; get; }
+
         public AttackAircraft(int maxSpeed, float weight, Color mainColor, Color dopColor, bool vint,
             bool pulemet, bool bombs) :
             base(maxSpeed, weight, mainColor)
         {
+
             DopColor = dopColor;
             Vint = vint;
             Pulemet = pulemet;
             Bombs = bombs;
+
         }
         public override void DrawAircraft(Graphics g)
         {
