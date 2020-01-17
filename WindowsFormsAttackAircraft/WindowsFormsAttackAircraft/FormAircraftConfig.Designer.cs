@@ -129,14 +129,14 @@
             // 
             // groupBoxCveta
             // 
-            this.groupBoxCveta.Controls.Add(this.panel5);
-            this.groupBoxCveta.Controls.Add(this.panel4);
-            this.groupBoxCveta.Controls.Add(this.panel6);
-            this.groupBoxCveta.Controls.Add(this.panel3);
-            this.groupBoxCveta.Controls.Add(this.panel7);
-            this.groupBoxCveta.Controls.Add(this.panel2);
-            this.groupBoxCveta.Controls.Add(this.panel8);
-            this.groupBoxCveta.Controls.Add(this.panel1);
+            this.groupBoxCveta.Controls.Add(this.white);
+            this.groupBoxCveta.Controls.Add(this.blue);
+            this.groupBoxCveta.Controls.Add(this.black);
+            this.groupBoxCveta.Controls.Add(this.yellow);
+            this.groupBoxCveta.Controls.Add(this.red);
+            this.groupBoxCveta.Controls.Add(this.brown);
+            this.groupBoxCveta.Controls.Add(this.green);
+            this.groupBoxCveta.Controls.Add(this.gray);
             this.groupBoxCveta.Location = new System.Drawing.Point(453, 49);
             this.groupBoxCveta.Name = "groupBoxCveta";
             this.groupBoxCveta.Size = new System.Drawing.Size(118, 252);
