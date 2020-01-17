@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aircraft.cs" />
     <Compile Include="AttackAircraft.cs" />
+    <Compile Include="FlyingObject.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="FormAttackAircraft.cs">
       <SubType>Form</SubType>
@@ -53,6 +55,7 @@
     <Compile Include="FormAttackAircraft.Designer.cs">
       <DependentUpon>FormAttackAircraft.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

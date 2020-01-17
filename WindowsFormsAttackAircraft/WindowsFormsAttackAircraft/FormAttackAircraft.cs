@@ -12,7 +12,7 @@ namespace WindowsFormsAttackAircraft
 {
     public partial class FormAttackAircraft : Form
     {
-        private AttackAircraft aircraft;
+        private ITransport attackAircraft;
 
         public FormAttackAircraft()
         {
@@ -22,35 +22,44 @@ namespace WindowsFormsAttackAircraft
         {
             Bitmap bmp = new Bitmap(pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            aircraft.DrawAttackAircraft(gr);
+            attackAircraft.DrawAircraft(gr);
             pictureBoxAttackAircraft.Image = bmp;
         }
+
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            aircraft = new AttackAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.Blue, Color.Black, true, true);
-            aircraft.SetPosition(rnd.Next(100, 300), rnd.Next(100, 300), pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
+            attackAircraft = new AttackAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Gray, true, true, true);
+            attackAircraft.SetPosition(rnd.Next(100, 300), rnd.Next(100, 300), pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
             Draw();
         }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
-            //получаем имя кнопки
             string name = (sender as Button).Name;
             switch (name)
             {
                 case "buttonUp":
-                    aircraft.MoveTransport(Direction.Up);
+                    attackAircraft.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    aircraft.MoveTransport(Direction.Down);
+                    attackAircraft.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    aircraft.MoveTransport(Direction.Left);
+                    attackAircraft.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    aircraft.MoveTransport(Direction.Right);
+                    attackAircraft.MoveTransport(Direction.Right);
                     break;
             }
+            Draw();
+        }
+
+        private void buttonCreateAtackAircraft_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            attackAircraft = new AttackAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Gray, false, false, false);
+            attackAircraft.SetPosition(rnd.Next(100, 300), rnd.Next(100, 300), pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
             Draw();
         }
     }
