@@ -17,13 +17,18 @@
         private void InitializeComponent()
         {
             this.pictureBoxAttackAircraft = new System.Windows.Forms.PictureBox();
+
+
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTakeAircraft = new System.Windows.Forms.PictureBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonTake_Aircraft = new System.Windows.Forms.Button();
+
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+
             this.Zakazat = new System.Windows.Forms.Button();
+
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttackAircraft)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAircraft)).BeginInit();
@@ -36,6 +41,7 @@
             this.pictureBoxAttackAircraft.Size = new System.Drawing.Size(777, 446);
             this.pictureBoxAttackAircraft.TabIndex = 0;
             this.pictureBoxAttackAircraft.TabStop = false;
+
             // 
             // groupBox1
             // 
@@ -112,6 +118,8 @@
             this.Controls.Add(this.Zakazat);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
+
+
             this.Controls.Add(this.pictureBoxAttackAircraft);
             this.Name = "FormParking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -127,13 +135,17 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAttackAircraft;
+
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTake_Aircraft;
         private System.Windows.Forms.PictureBox pictureBoxTakeAircraft;
+
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxLevels;
+
         private System.Windows.Forms.Button Zakazat;
+
     }
 }
 
