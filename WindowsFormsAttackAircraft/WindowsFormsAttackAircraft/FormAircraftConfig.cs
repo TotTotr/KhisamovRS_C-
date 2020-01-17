@@ -17,14 +17,14 @@ namespace WindowsFormsAttackAircraft
         public FormAircraftConfig()
         {
             InitializeComponent();
-            panel1.MouseDown += panelAircraft_MouseDown;
-            panel2.MouseDown += panelAircraft_MouseDown;
-            panel3.MouseDown += panelAircraft_MouseDown;
-            panel4.MouseDown += panelAircraft_MouseDown;
-            panel5.MouseDown += panelAircraft_MouseDown;
-            panel6.MouseDown += panelAircraft_MouseDown;
-            panel7.MouseDown += panelAircraft_MouseDown;
-            panel8.MouseDown += panelAircraft_MouseDown;
+            white.MouseDown += panelAircraft_MouseDown;
+            black.MouseDown += panelAircraft_MouseDown;
+            blue.MouseDown += panelAircraft_MouseDown;
+            brown.MouseDown += panelAircraft_MouseDown;
+            green.MouseDown += panelAircraft_MouseDown;
+            yellow.MouseDown += panelAircraft_MouseDown;
+            gray.MouseDown += panelAircraft_MouseDown;
+            red.MouseDown += panelAircraft_MouseDown;
 
             buttonDob.Click += (object sender, EventArgs e) => { Close(); };
         }
