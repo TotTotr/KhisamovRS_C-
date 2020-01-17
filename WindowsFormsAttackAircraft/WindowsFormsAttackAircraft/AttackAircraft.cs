@@ -14,7 +14,6 @@ namespace WindowsFormsAttackAircraft
         public bool Vint { private set; get; }
         public bool Pulemet { private set; get; }
         public bool Bombs { private set; get; }
-
         public AttackAircraft(int maxSpeed, float weight, Color mainColor, Color dopColor, bool vint,
             bool pulemet, bool bombs) :
             base(maxSpeed, weight, mainColor)
@@ -26,7 +25,6 @@ namespace WindowsFormsAttackAircraft
         }
         public override void DrawAircraft(Graphics g)
         {
-
             base.DrawAircraft(g);
             if (Pulemet)
             {
