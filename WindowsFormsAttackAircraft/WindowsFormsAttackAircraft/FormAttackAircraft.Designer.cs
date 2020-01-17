@@ -87,7 +87,7 @@
             this.buttonCreateAtackAircraft.TabIndex = 6;
             this.buttonCreateAtackAircraft.Text = "создать самолет";
             this.buttonCreateAtackAircraft.UseVisualStyleBackColor = true;
-            this.buttonCreateAtackAircraft.Click += new System.EventHandler(this.Button1_Click);
+            this.buttonCreateAtackAircraft.Click += new System.EventHandler(this.buttonCreateAtackAircraft_Click);
 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
