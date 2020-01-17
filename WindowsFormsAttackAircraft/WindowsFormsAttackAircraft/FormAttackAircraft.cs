@@ -34,8 +34,6 @@ namespace WindowsFormsAttackAircraft
             pictureBoxAttackAircraft.Image = bmp;
         }
 
-
-
         private void buttonTake_Aircraft_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
