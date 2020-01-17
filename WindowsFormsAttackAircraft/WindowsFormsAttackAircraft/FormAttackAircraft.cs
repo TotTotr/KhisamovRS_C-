@@ -55,7 +55,7 @@ namespace WindowsFormsAttackAircraft
             Draw();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void buttonCreateAtackAircraft_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             attackAircraft = new AttackAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Gray, false, false, false);
