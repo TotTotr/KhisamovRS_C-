@@ -108,7 +108,7 @@
             this.Zakazat.TabIndex = 9;
             this.Zakazat.Text = "Заказать самолет";
             this.Zakazat.UseVisualStyleBackColor = true;
-            this.Zakazat.Click += new System.EventHandler(this.Button1_Click);
+            this.Zakazat.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // FormParking
             // 
