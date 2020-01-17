@@ -53,9 +53,7 @@ namespace WindowsFormsAttackAircraft
             }
         }
 
-
         private void ButtonTake_Aircraft_Click(object sender, EventArgs e)
-
         {
             if (NomerSamolet.Text != "")
             {
