@@ -55,7 +55,9 @@ namespace WindowsFormsAttackAircraft
 
         }
 
+
         private void buttonSet_AttackAircraft_Click(object sender, EventArgs e)
+
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
