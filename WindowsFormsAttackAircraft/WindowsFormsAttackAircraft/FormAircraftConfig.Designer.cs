@@ -124,6 +124,7 @@
             this.panelAircraft.TabIndex = 2;
             this.panelAircraft.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelAircraft_DragDrop);
             this.panelAircraft.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelAircraft_DragEnter);
+
             // 
             // labelDopColor
             // 
@@ -247,6 +248,7 @@
             this.panelBlack.Size = new System.Drawing.Size(54, 54);
             this.panelBlack.TabIndex = 0;
             this.panelBlack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+
             // 
             // FormAircraftConfig
             // 
