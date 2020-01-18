@@ -19,7 +19,9 @@
             }
             base.Dispose(disposing);
         }
+
         #region Код, автоматически созданный конструктором форм Windows
+
         /// <summary>
         /// Требуемый метод для поддержки конструктора — не изменяйте 
         /// содержимое этого метода с помощью редактора кода.
@@ -51,7 +53,7 @@
             // 
             this.pictureBoxAttackAircraft.Location = new System.Drawing.Point(0, 27);
             this.pictureBoxAttackAircraft.Name = "pictureBoxAttackAircraft";
-            this.pictureBoxAttackAircraft.Size = new System.Drawing.Size(713, 435);
+            this.pictureBoxAttackAircraft.Size = new System.Drawing.Size(858, 435);
             this.pictureBoxAttackAircraft.TabIndex = 0;
             this.pictureBoxAttackAircraft.TabStop = false;
             // 
@@ -61,7 +63,7 @@
             this.groupBox1.Controls.Add(this.maskedTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.buttonTake_Aircraft);
-            this.groupBox1.Location = new System.Drawing.Point(719, 209);
+            this.groupBox1.Location = new System.Drawing.Point(864, 217);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(153, 240);
             this.groupBox1.TabIndex = 7;
@@ -105,7 +107,7 @@
             // listBoxLevels
             // 
             this.listBoxLevels.FormattingEnabled = true;
-            this.listBoxLevels.Location = new System.Drawing.Point(724, 49);
+            this.listBoxLevels.Location = new System.Drawing.Point(869, 57);
             this.listBoxLevels.Name = "listBoxLevels";
             this.listBoxLevels.Size = new System.Drawing.Size(147, 95);
             this.listBoxLevels.TabIndex = 8;
@@ -114,7 +116,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(726, 33);
+            this.label2.Location = new System.Drawing.Point(871, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 9;
@@ -122,7 +124,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(749, 150);
+            this.buttonAdd.Location = new System.Drawing.Point(894, 158);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(102, 44);
             this.buttonAdd.TabIndex = 10;
@@ -136,7 +138,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1028, 24);
             this.menuStrip.TabIndex = 11;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -176,7 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.ClientSize = new System.Drawing.Size(1028, 462);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxLevels);
@@ -195,8 +197,11 @@
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
+
         #endregion
+
         private System.Windows.Forms.PictureBox pictureBoxAttackAircraft;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTake_Aircraft;

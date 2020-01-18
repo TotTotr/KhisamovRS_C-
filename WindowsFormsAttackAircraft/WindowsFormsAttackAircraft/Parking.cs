@@ -63,8 +63,9 @@ namespace WindowsFormsAttackAircraft
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
+
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
@@ -86,14 +87,13 @@ namespace WindowsFormsAttackAircraft
         ///  <returns></returns>        
         public static T operator -(Parking<T> p, int index)
         {
-
             if (!p.CheckFreePlace(index))
             {
                 T car = p._places[index];
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
         /// <summary>         
         ///  Метод проверки заполнености парковочного места (ячейки массива)         
@@ -151,13 +151,17 @@ namespace WindowsFormsAttackAircraft
                 }
                 return null;
             }
+
             set
             {
                 if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
-
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }
