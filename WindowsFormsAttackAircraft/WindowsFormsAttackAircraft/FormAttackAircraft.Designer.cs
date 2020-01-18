@@ -195,6 +195,7 @@
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
         private System.Windows.Forms.PictureBox pictureBoxAttackAircraft;
