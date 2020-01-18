@@ -65,6 +65,7 @@ namespace WindowsFormsAttackAircraft
             writer.Close();
             return true;
         }
+
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
