@@ -12,40 +12,48 @@ namespace WindowsFormsAttackAircraft
 {
     public partial class FormAircraftConfig : Form
     {
+        /// <summary>
+        /// Переменная-выбранный самолет
+        /// </summary>
         ITransport aircraft = null;
-        private event aircraftDelegate eventAddAircraft;
+        private event carDelegate eventAddAircraft;
         public FormAircraftConfig()
         {
             InitializeComponent();
-            white.MouseDown += panelAircraft_MouseDown;
-            black.MouseDown += panelAircraft_MouseDown;
-            blue.MouseDown += panelAircraft_MouseDown;
-            brown.MouseDown += panelAircraft_MouseDown;
-            green.MouseDown += panelAircraft_MouseDown;
-            yellow.MouseDown += panelAircraft_MouseDown;
-            gray.MouseDown += panelAircraft_MouseDown;
-            red.MouseDown += panelAircraft_MouseDown;
+            panelBlack.MouseDown += panelColor_MouseDown;
+            panelFuchsia.MouseDown += panelColor_MouseDown;
+            panelGray.MouseDown += panelColor_MouseDown;
+            panelGreen.MouseDown += panelColor_MouseDown;
+            panelRed.MouseDown += panelColor_MouseDown;
+            panelWhite.MouseDown += panelColor_MouseDown;
+            panelYellow.MouseDown += panelColor_MouseDown;
+            panelBlue.MouseDown += panelColor_MouseDown;
 
-            buttonDob.Click += (object sender, EventArgs e) => { Close(); };
+            buttonCancel.Click += (object sender, EventArgs e) => { Close(); };
         }
-
-
+        /// <summary>
+        /// Отрисовать машину
+        /// </summary>
         private void DrawAircraft()
         {
             if (aircraft != null)
             {
-                Bitmap bmp = new Bitmap(pictureBoxAircrafta.Width, pictureBoxAircrafta.Height);
+                Bitmap bmp = new Bitmap(pictureBoxAircraft.Width, pictureBoxAircraft.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                aircraft.SetPosition(5, 5, pictureBoxAircrafta.Width, pictureBoxAircrafta.Height);
+                aircraft.SetPosition(5, 5, pictureBoxAircraft.Width, pictureBoxAircraft.Height);
                 aircraft.DrawAircraft(gr);
-                pictureBoxAircrafta.Image = bmp;
+                pictureBoxAircraft.Image = bmp;
             }
         }
-        public void AddEvent(aircraftDelegate ev)
+        /// <summary>        
+        /// /// Добавление события       
+        /// </summary>        
+        /// <param name="ev"></param>    
+        public void AddEvent(carDelegate ev)
         {
             if (eventAddAircraft == null)
             {
-                eventAddAircraft = new aircraftDelegate(ev);
+                eventAddAircraft = new carDelegate(ev);
             }
             else
             {
@@ -53,23 +61,29 @@ namespace WindowsFormsAttackAircraft
             }
         }
 
-        private void lableAircraft_MouseDown(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Передаем информацию при нажатии на Label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labelAircraft_MouseDown(object sender, MouseEventArgs e)
         {
             labelAircraft.DoDragDrop(labelAircraft.Text, DragDropEffects.Move | DragDropEffects.Copy);
-
-
         }
-        private void panelAircraft_MouseDown(object sender, MouseEventArgs e)
-        {
-            (sender as Control).DoDragDrop((sender as Control).BackColor, DragDropEffects.Move | DragDropEffects.Copy);
-        }
-
-
-
-        private void lableAttackAircraft_MouseDown(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Передаем информацию при нажатии на Label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labelAttackAircraft_MouseDown(object sender, MouseEventArgs e)
         {
             labelAttackAircraft.DoDragDrop(labelAttackAircraft.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
+        /// <summary>
+        /// Проверка получаемой информации (ее типа на соответствие требуемому)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panelAircraft_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
@@ -81,28 +95,44 @@ namespace WindowsFormsAttackAircraft
                 e.Effect = DragDropEffects.None;
             }
         }
+        /// <summary>
+        /// Действия при приеме перетаскиваемой информации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panelAircraft_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
-                case "Самолет":
+                case "Обычный самолет":
                     aircraft = new Aircraft(100, 500, Color.White);
                     break;
-                case "Бомбордировщик":
+                case "Штурмовик":
                     aircraft = new AttackAircraft(100, 500, Color.White, Color.Black, true, true, true);
                     break;
             }
             DrawAircraft();
         }
-        private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
+
+        /// Отправляем цвет с панели         
+        ///</summary>        
+        /// <param name="sender"></param>         
+        /// <param name="e"></param>         
+        private void panelColor_MouseDown(object sender, MouseEventArgs e)
+
         {
-            if (aircraft != null)
-            {
-                aircraft.SetMainColor((Color)e.Data.GetData(typeof(Color)));
-                DrawAircraft();
-            }
+            (sender as Control).DoDragDrop((sender as Control).BackColor,
+                DragDropEffects.Move | DragDropEffects.Copy);
         }
-        private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
+
+
+        /// <summary>       
+        /// Проверка получаемой информации (ее типа на соответствие требуемому)        
+        ///  </summary>        
+        ///  <param name="sender"></param>         
+        ///  <param name="e"></param>       
+        private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
+
         {
             if (e.Data.GetDataPresent(typeof(Color)))
             {
@@ -114,28 +144,45 @@ namespace WindowsFormsAttackAircraft
             }
         }
 
+        /// <summary>         
+        /// Принимаем основной цвет         
+        ///  </summary>       
+        ///  <param name="sender"></param>     
+        ///  <param name="e"></param>        
+        private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
+
+        {
+            if (aircraft != null)
+            {
+                aircraft.SetMainColor((Color)e.Data.GetData(typeof(Color)));
+                DrawAircraft();
+            }
+        }
+        /// <summary>        
+        /// Принимаем дополнительный цвет  
+        ///  </summary>         
+        ///  <param name="sender"></param>    
+        ///  <param name="e"></param>        
         private void labelDopColor_DragDrop(object sender, DragEventArgs e)
         {
             if (aircraft != null)
             {
-                if (aircraft is Aircraft)
+                if (aircraft is AttackAircraft)
                 {
                     (aircraft as AttackAircraft).SetDopColor((Color)e.Data.GetData(typeof(Color)));
                     DrawAircraft();
                 }
             }
-
         }
-        private void buttonOk_Click(object sender, EventArgs e)
+        /// <summary>        
+        /// /// Добавление машины     
+        /// /// </summary>        
+        /// /// <param name="sender"></param>       
+        /// /// <param name="e"></param>         
+        private void ButtonOk_Click(object sender, EventArgs e)
         {
             eventAddAircraft?.Invoke(aircraft);
             Close();
-        }
-
-        private void panelAircraft_MouseDow(object sender, MouseEventArgs e)
-        {
-            (sender as Control).DoDragDrop((sender as Control).BackColor,
-                DragDropEffects.Move | DragDropEffects.Copy);
         }
     }
 }

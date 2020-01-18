@@ -6,9 +6,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAttackAircraft
 {
-    public delegate void aircraftDelegate(ITransport aircraft);
+    public delegate void carDelegate(ITransport aircraft);
+
     static class Program
     {
+        /// <summary>
+        /// Главная точка входа для приложения.
+        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -16,6 +20,5 @@ namespace WindowsFormsAttackAircraft
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormParking());
         }
-
     }
 }
