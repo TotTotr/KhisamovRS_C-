@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace WindowsFormsAttackAircraft
 {
@@ -19,8 +19,8 @@ namespace WindowsFormsAttackAircraft
         public Color DopColor { protected set; get; }
         public void SetPosition(int x, int y, int width, int height)
         {
-            _startPosX = x - 20;
-            _startPosY = y + 30;
+            _startPosX = x;
+            _startPosY = y;
             _pictureWidth = width;
             _pictureHeight = height;
         }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAttackAircraft
 {
-    public class ParkingNotFoundException : Exception
+    class ParkingAlreadyHaveException : Exception
     {
-        public ParkingNotFoundException(int i) : base("Не найден автомобиль по месту " + i)
+        public ParkingAlreadyHaveException() : base("На парковке уже есть такой самолет")
         { }
     }
 }

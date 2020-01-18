@@ -10,7 +10,7 @@ namespace WindowsFormsAttackAircraft
     /// <summary>
     /// Класс отрисовки штурмовика
     /// </summary>
-    public class AttackAircraft : Aircraft
+    public class AttackAircraft : Aircraft, IComparable<AttackAircraft>, IEquatable<AttackAircraft>
     {
         public Color DopColor { private set; get; }
         public bool Turbines { private set; get; }
@@ -79,7 +79,81 @@ namespace WindowsFormsAttackAircraft
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Turbines + ";" + Propeller + ";" + Flag;
         }
+        public int CompareTo(AttackAircraft other)
+        {
+            var res = (this is Aircraft).CompareTo(other is Aircraft);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Turbines != other.Turbines)
+            {
+                return Turbines.CompareTo(other.Turbines);
+            }
+            if (Propeller != other.Propeller)
+            {
+                return Propeller.CompareTo(other.Propeller);
+            }
+            if (Flag != other.Flag)
+            {
+                return Flag.CompareTo(other.Flag);
+            }
+            return 0;
+        }
+        public bool Equals(AttackAircraft other)
+        {
+            var res = (this as Aircraft).Equals(other as Aircraft);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Turbines != other.Turbines)
+            {
+                return false;
+            }
+            if (Propeller != other.Propeller)
+            {
+                return false;
+            }
+            if (Flag != other.Flag)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is AttackAircraft aircraftObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(aircraftObj);
+            }
+        }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    
     }
 }
 

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Aircraft.cs" />
     <Compile Include="AttackAircraft.cs" />
+    <Compile Include="ParkingAlreadyHaveException.cs" />
     <Compile Include="ParkingNotFoundException .cs" />
     <Compile Include="FlyingObject.cs" />
     <Compile Include="Direction.cs" />
