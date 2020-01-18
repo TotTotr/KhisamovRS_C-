@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,65 +8,43 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAttackAircraft
 {
-    /// <summary>     
-    /// /// Параметризованны класс для хранения набора объектов от интерфейса ITransport    
-    /// /// </summary>    
-    /// /// <typeparam name="T"></typeparam>     
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Parking<T>> where T : class, ITransport
     {
-        /// <summary>        
-        ///  Массив объектов, которые храним        
-        /// </summary>        
         private Dictionary<int, T> _places;
         private int _maxCount;
-        /// <summary>        
-        ///  Ширина окна отрисовки        
-        /// </summary>        
-        private int PictureWidth { get; set; }
 
-        /// <summary>         
-        ///  Высота окна отрисовки         
-        /// </summary>        
+        private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
 
-        /// <summary>         
-        ///  Размер парковочного места (ширина)        
-        /// </summary> 
         private const int _placeSizeWidth = 210;
 
-        /// <summary>         
-        /// /// Размер парковочного места (высота)         
-        /// /// </summary>        
         private const int _placeSizeHeight = 80;
+        private int _currentIndex;
 
-        /// <summary>         
-        /// Конструктор         
-        ///  </summary>         
-        /// <param name="sizes">Количество мест на парковке</param>         
-        /// <param name="pictureWidth">Рамзер парковки - ширина</param>        
-        /// <param name="pictureHeight">Рамзер парковки - высота</param>        
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
-
         }
-        /// <summary>         
-        ///  Перегрузка оператора сложения         
-        ///  Логика действия: на парковку добавляется автомобиль        
-        /// </summary>         
-        /// <param name="p">Парковка</param>         
-        /// <param name="car">Добавляемый автомобиль</param>       
-        ///  <returns></returns>        
         public static int operator +(Parking<T> p, T car)
         {
             if (p._places.Count == p._maxCount)
             {
                 throw new ParkingOverflowException();
             }
-
+            if (p._places.ContainsValue(car))
+            {
+                throw new ParkingAlreadyHaveException();
+            }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
@@ -78,13 +57,7 @@ namespace WindowsFormsAttackAircraft
 
             return -1;
         }
-        /// <summary>         
-        ///  Перегрузка оператора вычитания         
-        ///  Логика действия: с парковки забираем автомобиль        
-        ///  </summary>        
-        ///  <param name="p">Парковка</param>         
-        ///  <param name="index">Индекс места, с которого пытаемся извлечь объект</param>  
-        ///  <returns></returns>        
+
         public static T operator -(Parking<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
@@ -95,19 +68,12 @@ namespace WindowsFormsAttackAircraft
             }
             throw new ParkingNotFoundException(index);
         }
-        /// <summary>         
-        ///  Метод проверки заполнености парковочного места (ячейки массива)         
-        ///  </summary>         
-        /// <param name="index">Номер парковочного места (порядковый номер в массиве)</param>         
-        ///  <returns></returns>        
+
         private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
-        /// <summary>         
-        /// Метод отрисовки парковки        
-        ///  </summary>        
-        ///  <param name="g"></param>         
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -117,10 +83,6 @@ namespace WindowsFormsAttackAircraft
                 _places[keys[i]].DrawAircraft(g);
             }
         }
-        /// <summary>         
-        ///  Метод отрисовки разметки парковочных мест      
-        ///  </summary>        
-        /// <param name="g"></param>        
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);  //границы праковки             
@@ -136,11 +98,6 @@ namespace WindowsFormsAttackAircraft
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
-        /// <summary>        
-        /// /// Индексатор         
-        /// /// </summary>        
-        /// /// <param name="ind"></param>        
-        /// /// <returns></returns>      
         public T this[int ind]
         {
             get
@@ -151,19 +108,95 @@ namespace WindowsFormsAttackAircraft
                 }
                 return null;
             }
-
             set
             {
                 if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+
                 }
                 else
                 {
                     throw new ParkingOccupiedPlaceException(ind);
                 }
             }
+        }
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        public void Dispose()
+        {
+
+        }
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public int CompareTo(Parking<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Aircraft && other._places[thisKeys[i]] is AttackAircraft)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is AttackAircraft && other._places[thisKeys[i]] is Aircraft)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Aircraft && other._places[thisKeys[i]] is Aircraft)
+                    {
+                        return (_places[thisKeys[i]] is Aircraft).CompareTo(other._places[thisKeys[i]] is Aircraft);
+                    }
+                    if (_places[thisKeys[i]] is AttackAircraft && other._places[thisKeys[i]] is AttackAircraft)
+                    {
+                        return (_places[thisKeys[i]] is AttackAircraft).CompareTo(other._places[thisKeys[i]] is AttackAircraft);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }
