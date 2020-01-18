@@ -70,16 +70,7 @@ namespace WindowsFormsAttackAircraft
             writer.Close();
             return true;
         }
-        /// <summary>        
-        /// /// Метод записи информации в файл        
-        /// /// </summary>        
-        /// /// <param name="text">Строка, которую следует записать</param>         
-        /// // <param name="stream">Поток для записи</param>     
        
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
-        }
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
