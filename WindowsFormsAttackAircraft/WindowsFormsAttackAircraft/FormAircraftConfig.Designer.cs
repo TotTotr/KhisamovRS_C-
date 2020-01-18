@@ -101,8 +101,8 @@
             this.OsnovCvet.TabIndex = 2;
             this.OsnovCvet.Text = "Основной Цвет";
             this.OsnovCvet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.OsnovCvet.DragDrop += new System.Windows.Forms.DragEventHandler(this.label3_DragDrop);
-            this.OsnovCvet.DragEnter += new System.Windows.Forms.DragEventHandler(this.label3_DragEnter);
+            this.OsnovCvet.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragDrop);
+            this.OsnovCvet.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
             // 
             // DopCvet
             // 
@@ -115,8 +115,8 @@
             this.DopCvet.TabIndex = 1;
             this.DopCvet.Text = "Доп Цвет";
             this.DopCvet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DopCvet.DragDrop += new System.Windows.Forms.DragEventHandler(this.label4_DragDrop);
-            this.DopCvet.DragEnter += new System.Windows.Forms.DragEventHandler(this.label3_DragEnter);
+            this.DopCvet.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelDopColor_DragDrop);
+            this.DopCvet.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
             // 
             // pictureBoxAircrafta
             // 
