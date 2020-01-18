@@ -33,7 +33,6 @@ namespace WindowsFormsAttackAircraft
             parking[listBoxLevels.SelectedIndex].Draw(gr);
             pictureBoxAttackAircraft.Image = bmp;
         }
-
         private void buttonTake_Aircraft_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)

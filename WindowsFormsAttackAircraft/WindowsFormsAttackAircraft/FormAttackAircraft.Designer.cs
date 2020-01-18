@@ -11,7 +11,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Код, автоматически созданный конструктором форм Windows
 
         private void InitializeComponent()
@@ -41,7 +40,6 @@
             this.pictureBoxAttackAircraft.Size = new System.Drawing.Size(777, 446);
             this.pictureBoxAttackAircraft.TabIndex = 0;
             this.pictureBoxAttackAircraft.TabStop = false;
-
             // 
             // groupBox1
             // 
@@ -129,13 +127,9 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAircraft)).EndInit();
             this.ResumeLayout(false);
-
         }
-
         #endregion
-
         private System.Windows.Forms.PictureBox pictureBoxAttackAircraft;
-
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTake_Aircraft;
         private System.Windows.Forms.PictureBox pictureBoxTakeAircraft;
