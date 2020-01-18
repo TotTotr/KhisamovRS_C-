@@ -113,15 +113,18 @@ namespace WindowsFormsAttackAircraft
             }
             DrawAircraft();
         }
+
         /// Отправляем цвет с панели         
         ///</summary>        
         /// <param name="sender"></param>         
         /// <param name="e"></param>         
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
+
         {
             (sender as Control).DoDragDrop((sender as Control).BackColor,
                 DragDropEffects.Move | DragDropEffects.Copy);
         }
+
 
         /// <summary>       
         /// Проверка получаемой информации (ее типа на соответствие требуемому)        
@@ -129,6 +132,7 @@ namespace WindowsFormsAttackAircraft
         ///  <param name="sender"></param>         
         ///  <param name="e"></param>       
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
+
         {
             if (e.Data.GetDataPresent(typeof(Color)))
             {
@@ -139,12 +143,14 @@ namespace WindowsFormsAttackAircraft
                 e.Effect = DragDropEffects.None;
             }
         }
+
         /// <summary>         
         /// Принимаем основной цвет         
         ///  </summary>       
         ///  <param name="sender"></param>     
         ///  <param name="e"></param>        
         private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
+
         {
             if (aircraft != null)
             {
