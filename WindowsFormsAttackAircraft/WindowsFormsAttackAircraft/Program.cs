@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAttackAircraft
 {
+    public delegate void aircraftDelegate(ITransport aircraft);
     static class Program
     {
         [STAThread]
@@ -15,5 +16,6 @@ namespace WindowsFormsAttackAircraft
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormParking());
         }
+
     }
 }

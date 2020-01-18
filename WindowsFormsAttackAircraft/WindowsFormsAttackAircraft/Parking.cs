@@ -6,15 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WindowsFormsAttackAircraft
-{  
+{
     public class Parking<T> where T : class, ITransport
-    {               
+    {
         private Dictionary<int, T> _places;
-        private int PictureWidth { get; set; }    
-        private int _maxCount;     
+
+        private int PictureWidth { get; set; }
+
+        private int _maxCount;
+
         private int PictureHeight { get; set; }
+
         private const int _placeSizeWidth = 210;
+
         private const int _placeSizeHeight = 80;
+
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
@@ -50,10 +56,12 @@ namespace WindowsFormsAttackAircraft
             }
             return null;
         }
+
         private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -70,11 +78,14 @@ namespace WindowsFormsAttackAircraft
             for (int i = 0; i < _maxCount / 5; i++)
             {
                 for (int j = 0; j < 6; ++j)
-                {                  
+                {
+
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
+
+
         }
     }
 }
