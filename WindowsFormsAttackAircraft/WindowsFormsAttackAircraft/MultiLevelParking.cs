@@ -40,20 +40,16 @@ namespace WindowsFormsAttackAircraft
             {
                 File.Delete(filename);
             }
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(filename);
-            //Записываем количество уровней                
+            StreamWriter writer = new StreamWriter(filename);
             writer.WriteLine("CountLeveles:" + parkingStages.Count);
             foreach (var level in parkingStages)
             {
-                //Начинаем уровень                    
                 writer.WriteLine("Level");
                 for (int i = 0; i < countPlaces; i++)
                 {
                     var aircraft = level[i];
                     if (aircraft != null)
                     {
-                        //если место не пустое          
-                        //Записываем тип мшаины            
                         if (aircraft.GetType().Name == "Aircraft")
                         {
                             writer.Write(i + ":Aircraft:");
@@ -62,7 +58,6 @@ namespace WindowsFormsAttackAircraft
                         {
                             writer.Write(i + ":AttackAircraft:");
                         }
-                        //Записываемые параметры           
                         writer.WriteLine(aircraft);
                     }
                 }
@@ -70,63 +65,77 @@ namespace WindowsFormsAttackAircraft
             writer.Close();
             return true;
         }
-       
+
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
+
             using (StreamReader sr = new StreamReader(filename, System.Text.Encoding.Default))
             {
+
                 int counter = -1;
                 ITransport aircraft = null;
 
-                string tempe = sr.ReadLine();
-                if (tempe.Contains("CountLeveles"))
+                string temp = sr.ReadLine();
+                if (temp.Contains("CountLeveles"))
                 {
-                    //считываем количество уровней   
-                    int count = Convert.ToInt32(tempe.Split(':')[1]);
+                    int count = Convert.ToInt32(temp.Split(':')[1]);
                     if (parkingStages != null)
                     {
                         parkingStages.Clear();
                     }
                     parkingStages = new List<Parking<ITransport>>(count);
+
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
+
                 }
                 while (true)
                 {
-                    tempe = sr.ReadLine();
 
-                    if (tempe == null)
+                    temp = sr.ReadLine();
+
+                    if (temp == null)
                         break;
-                    //идем по считанным записям           
-                    if (tempe == "Level")
+                    if (temp == "Level")
                     {
-                        //начинаем новый уровень        
                         counter++;
                         parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight)); continue;
                     }
 
-                    if (string.IsNullOrEmpty(tempe))
+                    if (string.IsNullOrEmpty(temp))
                     {
                         continue;
                     }
-                    if (tempe.Split(':')[1] == "Aircraft")
+                    if (temp.Split(':')[1] == "Aircraft")
                     {
-                        aircraft = new Aircraft(tempe.Split(':')[2]);
+                        aircraft = new Aircraft(temp.Split(':')[2]);
                     }
-                    else if (tempe.Split(':')[1] == "AttackAircraft")
+                    else if (temp.Split(':')[1] == "AttackAircraft")
                     {
-                        aircraft = new AttackAircraft(tempe.Split(':')[2]);
+                        aircraft = new AttackAircraft(temp.Split(':')[2]);
                     }
-                    parkingStages[counter][Convert.ToInt32(tempe.Split(':')[0])] = aircraft;
+
+                    parkingStages[counter][Convert.ToInt32(temp.Split(':')[0])] = aircraft;
+
                 }
             }
             return true;
+        }
+        /// <summary>        
+        /// /// Метод записи информации в файл        
+        /// /// </summary>        
+        /// /// <param name="text">Строка, которую следует записать</param>         
+        /// // <param name="stream">Поток для записи</param>     
+        private void WriteToFile(string text, FileStream stream)
+        {
+            byte[] info = new UTF8Encoding(true).GetBytes(text);
+            stream.Write(info, 0, info.Length);
         }
     }
 }
