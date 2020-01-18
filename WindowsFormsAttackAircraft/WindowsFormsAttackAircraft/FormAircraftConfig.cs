@@ -94,7 +94,7 @@ namespace WindowsFormsAttackAircraft
             }
             DrawAircraft();
         }
-        private void label3_DragDrop(object sender, DragEventArgs e)
+        private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
         {
             if (aircraft != null)
             {
@@ -102,7 +102,7 @@ namespace WindowsFormsAttackAircraft
                 DrawAircraft();
             }
         }
-        private void label3_DragEnter(object sender, DragEventArgs e)
+        private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(Color)))
             {
@@ -114,7 +114,7 @@ namespace WindowsFormsAttackAircraft
             }
         }
 
-        private void label4_DragDrop(object sender, DragEventArgs e)
+        private void labelDopColor_DragDrop(object sender, DragEventArgs e)
         {
             if (aircraft != null)
             {
