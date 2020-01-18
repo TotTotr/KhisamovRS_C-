@@ -19,8 +19,8 @@ namespace WindowsFormsAttackAircraft
         public Color DopColor { protected set; get; }
         public void SetPosition(int x, int y, int width, int height)
         {
-            _startPosX = x;
-            _startPosY = y;
+            _startPosX = x - 20;
+            _startPosY = y + 20;
             _pictureWidth = width;
             _pictureHeight = height;
         }

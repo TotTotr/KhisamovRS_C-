@@ -10,59 +10,70 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAttackAircraft
 {
-    public partial class FormAttackAircraft : Form
+    public partial class FormParking : Form
     {
-        private ITransport attackAircraft;
-
-        public FormAttackAircraft()
+        Parking<ITransport> parking;
+        public FormParking()
         {
             InitializeComponent();
+            parking = new Parking<ITransport>(20, pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
+            Draw();
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            attackAircraft.DrawAircraft(gr);
+            parking.Draw(gr);
             pictureBoxAttackAircraft.Image = bmp;
         }
-
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void ButtonSet_Aircraft_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            attackAircraft = new AttackAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Gray, true, true, true);
-            attackAircraft.SetPosition(rnd.Next(100, 300), rnd.Next(100, 300), pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
-            Draw();
-        }
-
-        private void buttonMove_Click(object sender, EventArgs e)
-        {
-            string name = (sender as Button).Name;
-            switch (name)
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                case "buttonUp":
-                    attackAircraft.MoveTransport(Direction.Up);
-                    break;
-                case "buttonDown":
-                    attackAircraft.MoveTransport(Direction.Down);
-                    break;
-                case "buttonLeft":
-                    attackAircraft.MoveTransport(Direction.Left);
-                    break;
-                case "buttonRight":
-                    attackAircraft.MoveTransport(Direction.Right);
-                    break;
+                var car = new Aircraft(100, 1000, dialog.Color);
+                int place = parking + car;
+                Draw();
             }
-            Draw();
         }
 
-        private void buttonCreateAtackAircraft_Click(object sender, EventArgs e)
+        private void ButtonSet_AttackAircraft_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            attackAircraft = new AttackAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Gray, false, false, false);
-            attackAircraft.SetPosition(rnd.Next(100, 300), rnd.Next(100, 300), pictureBoxAttackAircraft.Width, pictureBoxAttackAircraft.Height);
-            Draw();
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                ColorDialog dialogDop = new ColorDialog();
+                if (dialogDop.ShowDialog() == DialogResult.OK)
+                {
+                    var car = new AttackAircraft(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                    int place = parking + car;
+                    Draw();
+                }
+            }
+        }
+
+        private void ButtonTake_Aircraft_Click(object sender, EventArgs e)
+        {
+            if (NomerSamolet.Text != "")
+            {
+                var car = parking - Convert.ToInt32(NomerSamolet.Text);
+                if (car != null)
+                {
+                    Bitmap bmp = new Bitmap(pictureBoxTakeAircraft.Width, pictureBoxTakeAircraft.Height);
+                    Graphics gr = Graphics.FromImage(bmp);
+                    car.SetPosition(5, 5, pictureBoxTakeAircraft.Width, pictureBoxTakeAircraft.Height);
+                    car.DrawAircraft(gr);
+                    pictureBoxTakeAircraft.Image = bmp;
+                }
+                else
+                {
+                    Bitmap bmp = new Bitmap(pictureBoxTakeAircraft.Width, pictureBoxTakeAircraft.Height);
+
+                    pictureBoxTakeAircraft.Image = bmp;
+                }
+                Draw();
+            }
         }
     }
-
 }
-
