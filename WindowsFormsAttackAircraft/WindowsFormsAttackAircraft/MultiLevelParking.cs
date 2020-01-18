@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAttackAircraft
 {
-    class MultiLevelParking 
+    class MultiLevelParking
     {
         List<Parking<ITransport>> parkingStages;
         private const int countPlaces = 20;

@@ -179,10 +179,11 @@
             // 
             this.buttonSort.Location = new System.Drawing.Point(931, 158);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(71, 44);
-            this.buttonSort.TabIndex = 12;
+            this.buttonSort.Size = new System.Drawing.Size(70, 44);
+            this.buttonSort.TabIndex = 7;
             this.buttonSort.Text = "Сортировать";
             this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
             // 
             // FormParking
             // 
