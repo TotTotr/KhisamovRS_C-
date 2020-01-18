@@ -62,6 +62,7 @@ namespace WindowsFormsAttackAircraft
                     break;
             }
         }
+
         public override void DrawAircraft(Graphics g)
         {
             Brush br = new SolidBrush(MainColor);

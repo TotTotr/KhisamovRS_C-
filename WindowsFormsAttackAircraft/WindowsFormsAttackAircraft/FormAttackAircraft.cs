@@ -41,6 +41,7 @@ namespace WindowsFormsAttackAircraft
                 pictureBoxAttackAircraft.Image = bmp;
             }
         }
+
         /// <summary>        
         /// /// Обработка нажатия кнопки "Забрать"     
         /// /// </summary>         
@@ -48,6 +49,7 @@ namespace WindowsFormsAttackAircraft
         /// /// <param name="e"></param>        
 
         private void ButtonTake_Aircraft_Click(object sender, EventArgs e)
+
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
